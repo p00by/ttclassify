@@ -1,0 +1,59 @@
+buildscript {
+    ext.kotlin_version = '1.0.2'  // New
+    ext.spring_boot_version = '1.2.7.RELEASE'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"  // New
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'kotlin' // New
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'tt-classify'
+    version =  '0.1.0'
+}
+
+repositories {
+    jcenter()
+}
+
+// New entire sourceSets
+sourceSets {
+    main {
+        kotlin {
+            srcDir "src/main.kotlin.main/kotlin"
+        }
+        resources {
+            srcDir "src/main.kotlin.main/kotlin"
+        }
+    }
+    test {
+        kotlin {
+            srcDir "test/main.kotlin.main/kotlin"
+        }
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // New
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "commons-io:commons-io:2.5"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.7.4"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.7.4"
+    compile "org.apache.commons:commons-math3:3.6.1"
+
+
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
