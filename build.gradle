@@ -25,14 +25,13 @@ repositories {
     jcenter()
 }
 
-// New entire sourceSets
 sourceSets {
     main {
         kotlin {
             srcDir "src/main.kotlin.main/kotlin"
         }
         resources {
-            srcDir "src/main.kotlin.main/kotlin"
+            srcDir "src/main/kotlin"
         }
     }
     test {
@@ -50,10 +49,5 @@ dependencies {
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.7.4"
     compile "org.apache.commons:commons-math3:3.6.1"
 
-
     testCompile("junit:junit")
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
 }
