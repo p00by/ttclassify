@@ -20,7 +20,8 @@ class CombinedClassifier {
         classClassifier = neuralNetworkSerializer.loadClassClassifier()
     }
 
-    fun classifyCard(card: Card): Result {
+    fun classifyCard(unbalancedCard: Card): Result {
+        val card = unbalancedCard.stabilize()
         val warnings = ArrayList<String>()
         if (card.amountOfMatches() < 20) {
             warnings.add("Weinig matches gespeeld, de voorspelling is pas accuraat vanaf 20 matches")
