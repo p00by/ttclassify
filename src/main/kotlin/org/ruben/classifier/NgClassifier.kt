@@ -101,7 +101,7 @@ class NgClassifier (): Classifier() {
             el
         } }.sortedBy {  it.invoke().second }.last().invoke()
 
-        return bestGuess
+        return Pair(bestGuess.first, bestGuess.second * 100 / nns.size)
     }
 
 
