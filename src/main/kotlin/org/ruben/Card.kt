@@ -21,8 +21,11 @@ data class Card(val classifications: List<CardSection>, val current: Classificat
 
     fun stabilize(): Card {
         return Card(classifications.map{section ->
+            val amountOfMatches = amountOfMatches();
+            val additional = if (amountOfMatches >= 20) 0 else 20 - amountOfMatches;
+
             if (section.classification == current) {
-                CardSection(section.classification, section.wins + 2, section.losses + 2)
+                CardSection(section.classification, section.wins + 2 + additional / 2, section.losses + 2 additional / 2)
             } else {
                 section;
             }

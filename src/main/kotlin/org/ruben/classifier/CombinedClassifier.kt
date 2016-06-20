@@ -21,11 +21,13 @@ class CombinedClassifier {
     }
 
     fun classifyCard(unbalancedCard: Card): Result {
-        val card = unbalancedCard.stabilize()
         val warnings = ArrayList<String>()
-        if (card.amountOfMatches() < 20) {
+        if (unbalancedCard.amountOfMatches() < 20) {
             warnings.add("Weinig matches gespeeld, de voorspelling is pas accuraat vanaf 20 matches")
         }
+
+        val card = unbalancedCard.stabilize()
+
         if (card.current.ordinal < Classification.C0.ordinal) {
             warnings.add("Huidig klassement is hoger dan C0, de voorspelling werkt het beste vanaf C0 tot NG")
         }

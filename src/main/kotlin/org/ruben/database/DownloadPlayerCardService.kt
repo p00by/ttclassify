@@ -180,7 +180,7 @@ class DownloadPlayerCardService {
         val account = credentials.addChildElement("Account", "tab")
         account.addTextNode(classifyProperties.getTTApiUser())
         val password = credentials.addChildElement("Password", "tab")
-        //TODO make this a property somehow
+        //  TODO make this a property somehow
         account.addTextNode(classifyProperties.getTTApiPassword())
         val club = getMembersRequest.addChildElement("Club", "tab")
         club.addTextNode(clubName)
